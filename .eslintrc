@@ -1,0 +1,23 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "rules":{
+        "indent": ["error", 2, {"SwitchCase": 1}],
+        "@typescript-eslint/no-explicit-any": ["off"],
+        "no-multiple-empty-lines": ["error",{ "max":1 }],
+        "space-infix-ops": ["error"],
+        "comma-spacing": "error",
+        "space-in-parens": "error",
+        "no-multi-spaces": "error",
+        "eqeqeq": "error",
+        "spaced-comment": "error"
+    }
+  }
