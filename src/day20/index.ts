@@ -282,21 +282,17 @@ sets.forEach(set => {
   let stringified: string = stringifyNodesState(nodes, set.flipflops)
   let index: number
   const highPulses: number[] = []
-  const lowPulses: number[] = []
   while ((index = cache.findIndex(it => it[0] === stringified)) === -1) {
     const [lows, highs] = pushButton(nodes, (pulse: Pulse) => {
       if (pulse.origin === set.result && pulse.intensity === 'high') {
         highPulses.push(cache.length)
-      }
-      if (pulse.origin === set.result && pulse.intensity === 'low') {
-        lowPulses.push(cache.length)
       }
       return false
     })
     cache.push([stringified, lows, highs])
     stringified = stringifyNodesState(nodes, set.flipflops)
   }
-  console.log(index, cache.length, highPulses, lowPulses.filter(it => it === highPulses[0]))
+  console.log(index, cache.length)
 })
 
 // 1 3890 [ 3888 ]
@@ -304,15 +300,7 @@ sets.forEach(set => {
 // 1 4058 [ 4056 ]
 // 1 3768 [ 3766 ]
 
-// -3 is solution of all of them
-// all solutions are x + lcm(m1, m2, m3, m4) * t where x is particular solution and t is integer
-// mi are the length of cycle, which is the cache - 1
-
-// console.log(-2 + lcm(3890 - 1, 3780 - 1, 4058 - 1, 3768 - 1))  224602953547787 FAILED
-
-// console.log(-2 + lcm(3890, 3780, 4058, 3768)) 936813404518 POSSIBLY FAILED
-
-console.log(-1 + lcm(3890 - 1, 3780 - 1, 4058 - 1, 3768 - 1)) // 224602953547788 INCORRECT
+console.log(lcm(3890 - 1, 3780 - 1, 4058 - 1, 3768 - 1)) // 224602953547789
 
 console.log('Part 1:', dio.part1(dio.input))
 }

@@ -178,8 +178,8 @@ const getNodesByDistance = (input: string[], max: number): number[] => {
 }
 
 dio.part2 = input => {
-  const DIFF_SAMPLE = 6
-  const MAX_DISTANCE = Math.min(800, dio.params.steps)
+  const DIFF_SAMPLE = 5
+  const MAX_DISTANCE = Math.min(700, dio.params.steps)
   const nodes = getNodesByDistance(input, MAX_DISTANCE) // #nodes at exactly distance i where i is the index
 
   // We use Newton differences to find a polynomial pattern
@@ -225,7 +225,10 @@ dio.part2 = input => {
     .reduce((acc, curr, index) => acc + (index % 2 === dio.params.steps % 2 ? curr : 0), 0)
 }
 
-dio.params.steps = 64
-console.log('Part 1:', dio.part1(dio.input))
-dio.params.steps = 26501365
-console.log('Part 2:', dio.part2(dio.input))
+if(process.env.TESTING !== 'TRUE'){
+  dio.params.steps = 64
+  console.log('Part 1:', dio.part1(dio.input))
+  dio.params.steps = 26501365
+  console.log('Part 2:', dio.part2(dio.input))
+}
+
