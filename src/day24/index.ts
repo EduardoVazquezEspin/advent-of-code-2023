@@ -109,14 +109,11 @@ if(process.env.TESTING !== 'TRUE'){
     console.log('*********************************************************')
     console.log('******** Throw this in https://octave-online.net ********')
     console.log('*********************************************************')
-    console.log('******** If it doesn\'t work, try changing x0 or  ********')
-    console.log('********       the index of the hailstones       ********')
-    console.log('*********************************************************')
     console.log('output_precision(15);')
     console.log('function F = equation (x)')
-    printEquations(hailstones[3], 1)
-    printEquations(hailstones[4], 3)
-    printEquations(hailstones[5], 5)
+    hailstones.forEach((hailstone, index) => {
+      printEquations(hailstone, 2 * index + 1)
+    })
     console.log('endfunction')
     const midPoint : Hailstone = [
       {
