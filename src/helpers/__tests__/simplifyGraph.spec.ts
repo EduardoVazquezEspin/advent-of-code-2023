@@ -1,4 +1,4 @@
-import { simplifyGraph } from "../simplifyGraph"
+import {simplifyGraph} from '../simplifyGraph'
 
 test('simplifyGraph does nothing with no nodes of adjacency 2', () => {
     type Value = 'A' | 'B' | 'C' | 'D'
@@ -15,7 +15,7 @@ test('simplifyGraph does nothing with no nodes of adjacency 2', () => {
         case 'D':
           return[]
       }
-    } 
+    }
 
     const simplification = simplifyGraph(nodes, goesTo)
     expect(simplification).toHaveLength(4)
@@ -44,7 +44,7 @@ test('simplifyGraph will remove all adjacency 2 nodes', () => {
         return ['E']
       }
       return []
-    } 
+    }
 
     const simplification = simplifyGraph(nodes, goesTo)
     expect(simplification).toHaveLength(2)
@@ -95,25 +95,25 @@ for(let i = 0; i < map.length; i++){
 }
 
 const getNeighbours = (position: Position): Position[] => {
-  const { x, y } = position
-  
+  const {x, y} = position
+
   const result: Position[] = []
   let node: Position | undefined
   if(x > 0 && (node = nodes.find(it => it.x === x - 1 && it.y === y)) !== undefined){
     result.push(node)
   }
-  
+
   if(x < map.length - 1 && (node = nodes.find(it => it.x === x + 1 && it.y === y)) !== undefined){
     result.push(node)
   }
   if(y > 0 && (node = nodes.find(it => it.x === x && it.y === y - 1)) !== undefined){
     result.push(node)
   }
-  
+
   if(y < map[x].length - 1 && (node = nodes.find(it => it.x === x && it.y === y + 1)) !== undefined){
     result.push(node)
   }
-  
+
   return result
 }
 

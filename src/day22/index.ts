@@ -1,4 +1,4 @@
-import { getDIO, matchStringTemplate, topologicalSort } from '../helpers/index.ts'
+import {getDIO, matchStringTemplate, topologicalSort} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day22'))

@@ -1,4 +1,4 @@
-import { getDIO, toNumber } from '../helpers/index.ts'
+import {getDIO, toNumber} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day1'))

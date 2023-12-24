@@ -1,4 +1,4 @@
-import { gcd } from './gcd.ts'
+import {gcd} from './gcd.ts'
 
 export const lcm = (...args: number[]): number => {
   if (args.length < 2) {

@@ -1,4 +1,4 @@
-import { getDIO, lcm, matchStringTemplate } from '../helpers/index.ts'
+import {getDIO, lcm, matchStringTemplate} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day20'), 'test1b')
@@ -21,7 +21,7 @@ class Node {
   }
 
   runPulse (pulse: Pulse): Pulse[] {
-    return this.destinations.map(destination => ({ destination, intensity: pulse.intensity, origin: this.name }))
+    return this.destinations.map(destination => ({destination, intensity: pulse.intensity, origin: this.name}))
   }
 }
 
@@ -44,7 +44,7 @@ class FlipFlop extends Node {
   }
 
   runPulse (pulse: Pulse): Pulse[] {
-    const { intensity } = pulse
+    const {intensity} = pulse
 
     if (intensity === 'high') {
       return []
@@ -57,7 +57,7 @@ class FlipFlop extends Node {
       newIntensity = 'high'
     }
 
-    return this.destinations.map(destination => ({ destination, intensity: newIntensity, origin: this.name }))
+    return this.destinations.map(destination => ({destination, intensity: newIntensity, origin: this.name}))
   }
 }
 
@@ -75,7 +75,7 @@ class Conjunction extends Node {
   }
 
   runPulse (pulse: Pulse): Pulse[] {
-    const { intensity, origin } = pulse
+    const {intensity, origin} = pulse
 
     const index = this.memory.findIndex(it => it[0] === origin)
     if (index !== -1) {
@@ -87,7 +87,7 @@ class Conjunction extends Node {
       newIntensity = 'low'
     }
 
-    return this.destinations.map(destination => ({ intensity: newIntensity, origin: this.name, destination }))
+    return this.destinations.map(destination => ({intensity: newIntensity, origin: this.name, destination}))
   }
 }
 
@@ -123,7 +123,7 @@ const readInput = (input: string[]): Node[] => {
 }
 
 const pushButton = (nodes: Node[], onPulseReject: (pulse: Pulse) => boolean = () => false): [number, number] => {
-  const queue: Pulse[] = [{ origin: 'button', intensity: 'low', destination: 'broadcaster' }]
+  const queue: Pulse[] = [{origin: 'button', intensity: 'low', destination: 'broadcaster'}]
   let pulse: Pulse | undefined
   let lows: number = 0
   let highs: number = 0

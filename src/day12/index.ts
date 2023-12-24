@@ -1,5 +1,5 @@
-import { getDIO } from '../helpers/index.ts'
-import { type CachedSolutions, solveLeft, stringToInput, inputToString } from './solvers.ts'
+import {getDIO} from '../helpers/index.ts'
+import {type CachedSolutions, solveLeft, stringToInput, inputToString} from './solvers.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day12'))
@@ -24,7 +24,7 @@ dio.part2 = input => input.map(line => {
     }
     springs += data.springs
   }
-  return solveLeft(inputToString({ springs, count }), cache)
+  return solveLeft(inputToString({springs, count}), cache)
 }).reduce((acc, curr) => acc + curr, 0)
 
 if(process.env.TESTING !== 'TRUE'){

@@ -1,4 +1,4 @@
-import { getAllMatches, getDIO, lcm } from '../helpers/index.ts'
+import {getAllMatches, getDIO, lcm} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day8'))
@@ -33,7 +33,7 @@ export const getInput = (input: string[]): Input => {
 }
 
 dio.part1 = input => {
-  const { instructions, nodes } = getInput(input)
+  const {instructions, nodes} = getInput(input)
 
   let currentNode: Node | undefined = nodes.find(it => it.id === 'AAA')
   let steps = 0
@@ -56,7 +56,7 @@ dio.part1 = input => {
 }
 
 dio.part2 = input => {
-  const { instructions, nodes } = getInput(input)
+  const {instructions, nodes} = getInput(input)
 
   const currentNodes: Array<Node | undefined> = nodes.filter(it => it.id[2] === 'A')
 

@@ -12,7 +12,7 @@ type StackNode<T> = EvalNode<T> | AddNode<T>
 
 export const topologicalSort = <T>(nodes: T[], getChildren: (input: T) => T[]): T[] => {
   const result: T[] = []
-  const stack: Array<StackNode<T>> = nodes.map(node => ({ type: 'eval', node }))
+  const stack: Array<StackNode<T>> = nodes.map(node => ({type: 'eval', node}))
   const visited: Set<T> = new Set<T>()
   let top: StackNode<T> | undefined
   while ((top = stack.pop()) !== undefined) {
@@ -21,10 +21,10 @@ export const topologicalSort = <T>(nodes: T[], getChildren: (input: T) => T[]): 
     } else {
       if (!visited.has(top.node)) {
         visited.add(top.node)
-        stack.push({ node: top.node, type: 'add' })
+        stack.push({node: top.node, type: 'add'})
         const children = getChildren(top.node)
         children.forEach(node => {
-          stack.push({ node, type: 'eval' })
+          stack.push({node, type: 'eval'})
         })
       }
     }

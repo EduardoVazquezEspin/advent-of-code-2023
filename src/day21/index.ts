@@ -1,4 +1,4 @@
-import { getDIO } from '../helpers/index.ts'
+import {getDIO} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day21'))
@@ -18,7 +18,7 @@ const getStartingPosition = (input: string[]): Position => {
   for (let i = 0; i < input.length; i++) {
     for (let j = 0; j < input[i].length; j++) {
       if (input[i][j] === 'S') {
-        return { x: i, y: j }
+        return {x: i, y: j}
       }
     }
   }
@@ -27,47 +27,47 @@ const getStartingPosition = (input: string[]): Position => {
 
 const getNeighbours = (position: Position, input: string[]): Position[] => {
   const result: Position[] = []
-  const { x, y } = position
+  const {x, y} = position
   if (x > 0 && input[x - 1][y] !== '#') {
-    result.push({ x: x - 1, y })
+    result.push({x: x - 1, y})
   }
   if (x < input.length - 1 && input[x + 1][y] !== '#') {
-    result.push({ x: x + 1, y })
+    result.push({x: x + 1, y})
   }
   if (y > 0 && input[x][y - 1] !== '#') {
-    result.push({ x, y: y - 1 })
+    result.push({x, y: y - 1})
   }
   if (y < input[x].length - 1 && input[x][y + 1] !== '#') {
-    result.push({ x, y: y + 1 })
+    result.push({x, y: y + 1})
   }
   return result
 }
 
 const getNeighbours2 = (position: Position, real: Position, input: string[]): Array<[Position, Position]> => {
   const result: Array<[Position, Position]> = []
-  const { x, y } = position
+  const {x, y} = position
   const upX = x === 0 ? input.length - 1 : x - 1
   if (input[upX][y] !== '#') {
-    result.push([{ x: upX, y }, { x: real.x - 1, y: real.y }])
+    result.push([{x: upX, y}, {x: real.x - 1, y: real.y}])
   }
   const downX = x === input.length - 1 ? 0 : x + 1
   if (input[downX][y] !== '#') {
-    result.push([{ x: downX, y }, { x: real.x + 1, y: real.y }])
+    result.push([{x: downX, y}, {x: real.x + 1, y: real.y}])
   }
   const leftY = y === 0 ? input[x].length - 1 : y - 1
   if (input[x][leftY] !== '#') {
-    result.push([{ x, y: leftY }, { x: real.x, y: real.y - 1 }])
+    result.push([{x, y: leftY}, {x: real.x, y: real.y - 1}])
   }
   const rightY = y === input[x].length - 1 ? 0 : y + 1
   if (input[x][rightY] !== '#') {
-    result.push([{ x, y: rightY }, { x: real.x, y: real.y + 1 }])
+    result.push([{x, y: rightY}, {x: real.x, y: real.y + 1}])
   }
   return result
 }
 
 dio.part1 = input => {
   const start = getStartingPosition(input)
-  const queue: BFS_DO[] = [{ position: start, distance: 0 }]
+  const queue: BFS_DO[] = [{position: start, distance: 0}]
   const height = input.length
   const width = input[0].length
   const distance: number[][] = Array(height).fill([]).map(() => Array(width).fill(-1))
@@ -81,7 +81,7 @@ dio.part1 = input => {
         solutions++
       }
       const neighbours = getNeighbours(top.position, input)
-      neighbours.forEach(neighbour => queue.push({ position: neighbour, distance: topDistance + 1 }))
+      neighbours.forEach(neighbour => queue.push({position: neighbour, distance: topDistance + 1}))
     }
   }
   return solutions
@@ -142,24 +142,24 @@ export const getNewtonDiff = (history: History, order: number | undefined = unde
     diffs.push(newDiff)
     iter++
   }
-  return { diffs, order: iter - 1, finished: curr.every(it => it === 0) }
+  return {diffs, order: iter - 1, finished: curr.every(it => it === 0)}
 }
 
 const getNodesByDistance = (input: string[], max: number): number[] => {
   const start = getStartingPosition(input)
-  const queue: BFS_DO[] = [{ position: start, distance: 0, payload: start }]
+  const queue: BFS_DO[] = [{position: start, distance: 0, payload: start}]
   const distance: Record<number, Record<number, number>> = {}
   const nodes: number[] = []
   let top: BFS_DO | undefined
   while ((top = queue.shift()) !== undefined) {
     const topDistance: number = top.distance
-    const { position, payload } = top
+    const {position, payload} = top
     const real = payload as Position
     let hasBeenCalculated: boolean = true
 
     if (distance[real.x] === undefined) {
       hasBeenCalculated = false
-      distance[real.x] = { [real.y]: topDistance }
+      distance[real.x] = {[real.y]: topDistance}
     } else if (distance[real.x][real.y] === undefined) {
       hasBeenCalculated = false
       distance[real.x][real.y] = topDistance
@@ -171,7 +171,7 @@ const getNodesByDistance = (input: string[], max: number): number[] => {
       }
       nodes[topDistance]++
       const neighbours = getNeighbours2(position, real, input)
-      neighbours.forEach(([map, real]: [Position, Position]) => queue.push({ position: map, distance: topDistance + 1, payload: real }))
+      neighbours.forEach(([map, real]: [Position, Position]) => queue.push({position: map, distance: topDistance + 1, payload: real}))
     }
   }
   return nodes

@@ -1,4 +1,4 @@
-import { getDIO } from '../helpers/index.ts'
+import {getDIO} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day10'))
@@ -90,7 +90,7 @@ dio.part1 = input => {
   const [x, y] = getStartPosition(input)
   const width = input.length
   const height = input[0].length
-  const distance = Array(width).fill(-1).map(_ => Array(height).fill(-1))
+  const distance = Array(width).fill(-1).map(() => Array(height).fill(-1))
   distance[x][y] = 0
   const queue: PositionWithNewDistance[] = getNeighbours(x, y, width, height).map(it => [...it, 1])
   let top: PositionWithNewDistance | undefined
@@ -115,14 +115,14 @@ dio.part2 = input => {
   const [x, y] = getStartPosition(input)
   const width = input.length
   const height = input[0].length
-  const area: number[][] = Array(width).fill(-1).map(_ => Array(height).fill(-1))
-  const distance = Array(width).fill(-1).map(_ => Array(height).fill(-1))
+  const area: number[][] = Array(width).fill(-1).map(() => Array(height).fill(-1))
+  const distance = Array(width).fill(-1).map(() => Array(height).fill(-1))
   area[x][y] = 0
   distance[x][y] = 0
 
   const queue: PositionWithAreaCalc[] = getNeighbours(x, y, width, height).map(it => {
     const [x, y] = directionToVector[it[2]]
-    return [...it, { area: 0, x, y, distance: 1 }]
+    return [...it, {area: 0, x, y, distance: 1}]
   }
 
   )
@@ -138,7 +138,7 @@ dio.part2 = input => {
         const [x, y] = directionToVector[it[2]]
         const newArea = areaCalc.area + areaCalc.x * y - areaCalc.y * x
         const [newX, newY] = [areaCalc.x + x, areaCalc.y + y]
-        return [...it, { area: newArea, x: newX, y: newY, distance: areaCalc.distance + 1 }]
+        return [...it, {area: newArea, x: newX, y: newY, distance: areaCalc.distance + 1}]
       })
       const filtered = neighbours.filter(it => it[2] === direction)
       queue.push(...filtered)

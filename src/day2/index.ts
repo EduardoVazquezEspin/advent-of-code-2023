@@ -1,4 +1,4 @@
-import { getAllMatches, getDIO } from '../helpers/index.ts'
+import {getAllMatches, getDIO} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day2'))

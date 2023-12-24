@@ -1,4 +1,4 @@
-import { getAllMatches, getDIO } from '../helpers/index.ts'
+import {getAllMatches, getDIO} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day6'), 'test-impossible')
@@ -15,7 +15,7 @@ const getInput1 = (input: string[]): Input => {
   const distances = getAllMatches(input[1], /\d+/g, 0)
   const races: Race[] = []
   for (let i = 0; i < times.length; i++) {
-    races.push({ time: parseInt(times[i]), distance: parseInt(distances[i]) })
+    races.push({time: parseInt(times[i]), distance: parseInt(distances[i])})
   }
   return races
 }
@@ -23,7 +23,7 @@ const getInput1 = (input: string[]): Input => {
 const getInput2 = (input: string[]): Race => {
   const time = getAllMatches(input[0], /\d+/g, 0).reduce((acc, curr) => acc + curr, '')
   const distance = getAllMatches(input[1], /\d+/g, 0).reduce((acc, curr) => acc + curr, '')
-  return { time: parseInt(time), distance: parseInt(distance) }
+  return {time: parseInt(time), distance: parseInt(distance)}
 }
 
 dio.part1 = input => {

@@ -1,4 +1,4 @@
-import { b64ToB10 } from '../b64ToB10.ts'
+import {b64ToB10} from '../b64ToB10.ts'
 
 test.each`
 hex | dec
@@ -16,6 +16,6 @@ ${'7807d'} | ${491645}
 ${'a77fa'} | ${686074}
 ${'01523'} | ${5411}
 ${'7a21e'} | ${500254}
-`('from $hex to $dec', ({ hex, dec }) => {
+`('from $hex to $dec', ({hex, dec}) => {
   expect(b64ToB10(hex)).toBe(dec)
 })

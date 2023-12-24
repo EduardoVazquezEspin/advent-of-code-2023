@@ -1,4 +1,4 @@
-import { getDIO } from '../helpers/index.ts'
+import {getDIO} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day3'))
@@ -54,7 +54,7 @@ dio.part2 = input => {
       }
       const end = i
       if (start < end) {
-        numbers.push({ line: j, start, end })
+        numbers.push({line: j, start, end})
       }
     }
   }

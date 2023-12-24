@@ -1,4 +1,4 @@
-import { getDIO, getSumOfAllDifferences } from '../helpers/index.ts'
+import {getDIO, getSumOfAllDifferences} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day11'))
@@ -37,7 +37,7 @@ dio.part2 = dio.part1
 if(process.env.TESTING !== 'TRUE'){
   dio.params.expansion = 2
   console.log('Part 1:', dio.part1(dio.input))
-  
+
   dio.params.expansion = 1000000
   console.log('Part 2:', dio.part2(dio.input))
 }

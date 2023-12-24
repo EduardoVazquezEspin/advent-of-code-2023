@@ -1,4 +1,4 @@
-import { PriorityQueue, type IComparable } from '../PriorityQueue.ts'
+import {PriorityQueue, type IComparable} from '../PriorityQueue.ts'
 
 class ComparableNumber implements IComparable {
   public number: number
@@ -24,7 +24,7 @@ ${4} | ${[2, 3, 1]} | ${3}
 ${5} | ${[3, 2, 1]} | ${3}
 ${6} | ${[3, 1, 2]} | ${3}
 ${7} | ${[19, 57, 12, 56, 11, 20, 70, 21, 50, 84, 67, 97, 82, 69, 41, 53, 37, 58, 59, 90]} | ${97}
-`('When adding elements and dequeueing one we obtain the max $case', ({ array, top }) => {
+`('When adding elements and dequeueing one we obtain the max $case', ({array, top}) => {
   const pq = new PriorityQueue<ComparableNumber>()
   array.forEach((it: number) => {
     pq.enqueue(new ComparableNumber(it))

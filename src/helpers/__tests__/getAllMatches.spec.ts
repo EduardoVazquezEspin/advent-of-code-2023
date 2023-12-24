@@ -1,4 +1,4 @@
-import { getAllMatches } from '../getAllMatches.ts'
+import {getAllMatches} from '../getAllMatches.ts'
 
 describe('getAllMatches tests', () => {
   test('1 match', () => {

@@ -1,4 +1,4 @@
-import { getDIO, setCharAt, reduceToInterval } from '../helpers/index.ts'
+import {getDIO, setCharAt, reduceToInterval} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day14'))

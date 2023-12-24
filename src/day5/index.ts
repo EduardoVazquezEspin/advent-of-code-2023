@@ -1,4 +1,4 @@
-import { getDIO, splitInput } from '../helpers/index.ts'
+import {getDIO, splitInput} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day5'))
@@ -21,7 +21,7 @@ const getInput = (input: string[]): Input => {
   for (let i = 1; i < split.length; i++) {
     maps.push(split[i].filter((_, index) => index > 0).map(it => it.split(' ').map(thing => parseInt(thing))))
   }
-  return { seeds, maps }
+  return {seeds, maps}
 }
 
 const mapSeed = (seed: number, map: number[][]): number => {
@@ -47,10 +47,10 @@ const mapRangeEntry = (range: Range, entry: number[]): { pending: Range[], finis
   }
   const pending: Range[] = []
   if (range.start < entry[1]) {
-    pending.push({ start: range.start, end: entry[1] })
+    pending.push({start: range.start, end: entry[1]})
   }
   if (range.end > entry[1] + entry[2]) {
-    pending.push({ start: entry[1] + entry[2], end: range.end })
+    pending.push({start: entry[1] + entry[2], end: range.end})
   }
   return {
     finished: [
@@ -80,7 +80,7 @@ const mapRanges = (ranges: Range[], map: number[][]): Range[] => {
 }
 
 dio.part1 = input => {
-  const { seeds, maps } = getInput(input)
+  const {seeds, maps} = getInput(input)
 
   return Math.min(...seeds.map((seed: number): number => {
     maps.forEach(map => {
@@ -91,13 +91,13 @@ dio.part1 = input => {
 }
 
 dio.part2 = input => {
-  const { seeds, maps } = getInput(input)
+  const {seeds, maps} = getInput(input)
 
   let min: number | undefined
 
   for (let i = 0; i < seeds.length / 2; i++) {
     const start = seeds[2 * i]
-    let ranges: Range[] = [{ start, end: start + seeds[2 * i + 1] }]
+    let ranges: Range[] = [{start, end: start + seeds[2 * i + 1]}]
 
     maps.forEach(map => {
       ranges = mapRanges(ranges, map)

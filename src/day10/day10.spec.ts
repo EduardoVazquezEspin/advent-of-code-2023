@@ -1,4 +1,4 @@
-import { dio } from './index.ts'
+import {dio} from './index.ts'
 
 if (dio.test.test1 !== undefined) {
   test('Part 1', () => {

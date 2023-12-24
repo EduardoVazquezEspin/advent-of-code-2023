@@ -1,4 +1,4 @@
-import { getDIO, splitInput } from '../helpers/index.ts'
+import {getDIO, splitInput} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day13'))
@@ -118,7 +118,7 @@ const findReflections = (input: string[]): Reflection[] => {
       verticalSolutions.push(i + 1)
     }
   }
-  verticalSolutions = verticalSolutions.filter(it => isReflection(input, { type: 'vertical', index: it }))
+  verticalSolutions = verticalSolutions.filter(it => isReflection(input, {type: 'vertical', index: it}))
 
   let horizontalSolutions = []
   for (let j = 0; j < height - 1; j++) {
@@ -130,11 +130,11 @@ const findReflections = (input: string[]): Reflection[] => {
       horizontalSolutions.push(j + 1)
     }
   }
-  horizontalSolutions = horizontalSolutions.filter(it => isReflection(input, { type: 'horizontal', index: it }))
+  horizontalSolutions = horizontalSolutions.filter(it => isReflection(input, {type: 'horizontal', index: it}))
 
   return [
-    ...verticalSolutions.map((it: number): Reflection => ({ type: 'vertical', index: it })),
-    ...horizontalSolutions.map((it: number): Reflection => ({ type: 'horizontal', index: it }))
+    ...verticalSolutions.map((it: number): Reflection => ({type: 'vertical', index: it})),
+    ...horizontalSolutions.map((it: number): Reflection => ({type: 'horizontal', index: it}))
   ]
 }
 
@@ -168,7 +168,7 @@ const findOneReflections = (input: string[]): Reflection[] => {
       verticalSolutions.push(i + 1)
     }
   }
-  verticalSolutions = verticalSolutions.filter(it => isOneReflection(input, { type: 'vertical', index: it }))
+  verticalSolutions = verticalSolutions.filter(it => isOneReflection(input, {type: 'vertical', index: it}))
 
   let horizontalSolutions = []
   for (let j = 0; j < height - 1; j++) {
@@ -187,11 +187,11 @@ const findOneReflections = (input: string[]): Reflection[] => {
       horizontalSolutions.push(j + 1)
     }
   }
-  horizontalSolutions = horizontalSolutions.filter(it => isOneReflection(input, { type: 'horizontal', index: it }))
+  horizontalSolutions = horizontalSolutions.filter(it => isOneReflection(input, {type: 'horizontal', index: it}))
 
   return [
-    ...verticalSolutions.map((it: number): Reflection => ({ type: 'vertical', index: it })),
-    ...horizontalSolutions.map((it: number): Reflection => ({ type: 'horizontal', index: it }))
+    ...verticalSolutions.map((it: number): Reflection => ({type: 'vertical', index: it})),
+    ...horizontalSolutions.map((it: number): Reflection => ({type: 'horizontal', index: it}))
   ]
 }
 

@@ -1,4 +1,4 @@
-import { type Polygonal, b64ToB10, getDIO, matchStringTemplate, calcPolygonalData } from '../helpers/index.ts'
+import {type Polygonal, b64ToB10, getDIO, matchStringTemplate, calcPolygonalData} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day18'))
@@ -28,7 +28,7 @@ dio.part1 = input => {
     return [steps * vectorStep[0], steps * vectorStep[1]]
   })
 
-  const { biarea, perimeter } = calcPolygonalData(polygonal)
+  const {biarea, perimeter} = calcPolygonalData(polygonal)
 
   const area = Math.abs(biarea) / 2
   const interior = area - perimeter / 2 + 1
@@ -64,7 +64,7 @@ dio.part2 = input => {
     return [steps * vectorStep[0], steps * vectorStep[1]]
   })
 
-  const { biarea, perimeter } = calcPolygonalData(polygonal)
+  const {biarea, perimeter} = calcPolygonalData(polygonal)
 
   const area = Math.abs(biarea) / 2
   const interior = area - perimeter / 2 + 1

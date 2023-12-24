@@ -1,4 +1,4 @@
-import { dio, historyToString, stringToHistory } from './index.ts'
+import {dio, historyToString, stringToHistory} from './index.ts'
 
 beforeAll(() => {
   jest.spyOn(console, 'log').mockImplementation(() => {})
@@ -6,9 +6,9 @@ beforeAll(() => {
 
 test.each`
 case | history
-${1} | ${[{x:1, y:3}, {x:3, y:5}, {x:-3, y:0}]}
-${2} | ${[{x:1314, y:-3032}, {x:-8953, y:-240}, {x:-9418, y:3790}]}
-${3} | ${[{x:0, y:0}, {x:0, y:0}]}
+${1} | ${[{x: 1, y: 3}, {x: 3, y: 5}, {x: -3, y: 0}]}
+${2} | ${[{x: 1314, y: -3032}, {x: -8953, y: -240}, {x: -9418, y: 3790}]}
+${3} | ${[{x: 0, y: 0}, {x: 0, y: 0}]}
 `('history to string to history $case', ({history}) => {
   expect(stringToHistory(historyToString(history))).toEqual(history)
 })

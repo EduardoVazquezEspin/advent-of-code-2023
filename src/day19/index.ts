@@ -1,4 +1,4 @@
-import { getDIO, matchStringTemplate } from '../helpers/index.ts'
+import {getDIO, matchStringTemplate} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day19'))
@@ -45,15 +45,15 @@ type RangedMetalShape = Record<Category, Range>
 
 const copyRangedMetalShape = (rms: RangedMetalShape): RangedMetalShape => {
   return {
-    x: { ...rms.x },
-    m: { ...rms.m },
-    a: { ...rms.a },
-    s: { ...rms.s }
+    x: {...rms.x},
+    m: {...rms.m},
+    a: {...rms.a},
+    s: {...rms.s}
   }
 }
 
 const getPossibilities = (rms: RangedMetalShape): number => {
-  return getRangeLength(rms.x) * getRangeLength(rms.m) * getRangeLength(rms.a) * getRangeLength(rms.s) 
+  return getRangeLength(rms.x) * getRangeLength(rms.m) * getRangeLength(rms.a) * getRangeLength(rms.s)
 }
 
 const hasPossibilities = (rms: RangedMetalShape): boolean => {
@@ -88,12 +88,12 @@ dio.part1 = input => {
         const comparator: Comparator = matching[1] as Comparator
         const value: number = parseInt(matching[2])
         const result: string = matching[3]
-        return { type: 'conditional', category, comparator, value, result }
+        return {type: 'conditional', category, comparator, value, result}
       } else {
-        return { type: 'fixed', result: it }
+        return {type: 'fixed', result: it}
       }
     })
-    workflows[name] = { instructions, name }
+    workflows[name] = {instructions, name}
     index++
   }
   index++
@@ -105,7 +105,7 @@ dio.part1 = input => {
     const m = parseInt(metalShapeStr[1])
     const a = parseInt(metalShapeStr[2])
     const s = parseInt(metalShapeStr[3])
-    metalShapes.push({ x, m, a, s })
+    metalShapes.push({x, m, a, s})
     index++
   }
 
@@ -165,21 +165,21 @@ dio.part2 = input => {
         const comparator: Comparator = matching[1] as Comparator
         const value: number = parseInt(matching[2])
         const result: string = matching[3]
-        return { type: 'conditional', category, comparator, value, result }
+        return {type: 'conditional', category, comparator, value, result}
       } else {
-        return { type: 'fixed', result: it }
+        return {type: 'fixed', result: it}
       }
     })
-    workflows[name] = { instructions, name }
+    workflows[name] = {instructions, name}
     index++
   }
 
   const queue: Array<[RangedMetalShape, string]> = [[
     {
-      x: { min: 1, max: 4000 },
-      m: { min: 1, max: 4000 },
-      a: { min: 1, max: 4000 },
-      s: { min: 1, max: 4000 }
+      x: {min: 1, max: 4000},
+      m: {min: 1, max: 4000},
+      a: {min: 1, max: 4000},
+      s: {min: 1, max: 4000}
     }, 'in'
   ]]
   const accepted: RangedMetalShape[] = []

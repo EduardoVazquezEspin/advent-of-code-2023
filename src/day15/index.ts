@@ -1,4 +1,4 @@
-import { getDIO } from '../helpers/index.ts'
+import {getDIO} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day15'))
@@ -43,7 +43,7 @@ dio.part2 = input => {
       }
       const lensIndex: number = box.findIndex(it => it.label === label)
       if (lensIndex === -1) {
-        box.push({ label, 'focal-length': focalLength })
+        box.push({label, 'focal-length': focalLength})
       } else {
         box[lensIndex]['focal-length'] = focalLength
       }

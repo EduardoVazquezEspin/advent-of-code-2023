@@ -1,4 +1,4 @@
-import { matchStringTemplate, getDIO } from '../helpers/index.ts'
+import {matchStringTemplate, getDIO} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day4'))

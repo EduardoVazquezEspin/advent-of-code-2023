@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { type DIO } from '../interfaces.ts'
+import {type DIO} from '../interfaces.ts'
 
 export const getDIO =
  (dirname: string, ...args: string[]): DIO => {
@@ -10,13 +10,19 @@ export const getDIO =
      test1 = fs.readFileSync(path.resolve(dirname, './test1.txt'), 'utf8').split('\n')
      res1 = test1[test1.length - 1]
      test1 = test1.slice(0, test1.length - 2)
-   } catch (e) {}
+   } catch (e) {
+     test1 = undefined
+     res1 = undefined
+   }
    let test2, res2
    try {
      test2 = fs.readFileSync(path.resolve(dirname, './test2.txt'), 'utf8').split('\n')
      res2 = test2[test2.length - 1]
      test2 = test2.slice(0, test2.length - 2)
-   } catch (e) {}
+   } catch (e) {
+     test2 = undefined
+     res2 = undefined
+   }
 
    const extra: Record<string, string | string[]> = {}
 
@@ -28,7 +34,10 @@ export const getDIO =
        testData = testData.slice(0, testData.length - 2)
        extra[file] = testData
        extra[file.replace('test', 'res')] = resData
-     } catch (e) {}
+     } catch (e) {
+       testData = undefined
+       resData = undefined
+     }
    })
 
    return {

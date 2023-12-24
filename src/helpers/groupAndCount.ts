@@ -14,7 +14,7 @@ export const groupAndCount = <T>(input: T[]): Array<GroupAndCount<T>> => {
   const result: Array<GroupAndCount<T>> = []
   let x: [T, number] | undefined
   while ((x = iter.next().value) !== undefined) {
-    result.push({ value: x[0], count: x[1] })
+    result.push({value: x[0], count: x[1]})
   }
   return result.sort((a, b) => b.count - a.count)
 }

@@ -1,4 +1,4 @@
-import { getDIO, groupAndCount } from '../helpers/index.ts'
+import {getDIO, groupAndCount} from '../helpers/index.ts'
 import path from 'path'
 
 export const dio = getDIO(path.resolve('./src/day7'), 'test1b', 'test2b')

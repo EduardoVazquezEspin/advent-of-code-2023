@@ -28,7 +28,7 @@ export const equal2Array = <T>(arrayFrom: Edge<T>[], arrayTo: Edge<T>[]): boolea
 }
 
 export const simplifyGraph = <T>(
-  nodes: T[], 
+  nodes: T[],
   goesTo: (input: T) => T[]
 ): Node<T>[] => {
   const map = new Map<T, Node<T>>()

@@ -13,7 +13,7 @@ interface PolygonalNode {
 }
 
 const scalePolygonalNode = (scalar: number, node: PolygonalNode): PolygonalNode => {
-  return { type: 'polygonal', vector: [scalar * node.vector[0], scalar * node.vector[1]] }
+  return {type: 'polygonal', vector: [scalar * node.vector[0], scalar * node.vector[1]]}
 }
 
 interface IntersectionNode {
@@ -86,7 +86,7 @@ const findIntersectionsAndCut = (polygonal: Polygonal): PolygonalOrIntersectionN
   let intersectionIndex: number = 0
   let top: PolygonalOrIntersectionNode | undefined
   for (let i = 0; i < polygonal.length; i++) {
-    currentWork.push({ type: 'polygonal', vector: polygonal[i] })
+    currentWork.push({type: 'polygonal', vector: polygonal[i]})
     while ((top = currentWork.pop()) !== undefined) {
       if (top.type === 'polygonal') {
         let hasIntersections: boolean = false
@@ -148,9 +148,9 @@ const mergePolygonalsIntoInstructions = (listWithIntersections: PolygonalOrInter
       displacement[1] += currentNode.vector[1]
       currentPolygonal.push(currentNode.vector)
     } else {
-      const { biarea, perimeter } = calcPolygonalDataWithDisplacement(currentPolygonal, prevDisplacement)
+      const {biarea, perimeter} = calcPolygonalDataWithDisplacement(currentPolygonal, prevDisplacement)
       const prevIntersection = listOfInstructions.length !== 0 ? listOfInstructions[listOfInstructions.length - 1] as IntersectionNode : undefined
-      const instructionsNode: InstructionsNode = { type: 'instructions', biarea, perimeter, start: prevIntersection, end: currentNode }
+      const instructionsNode: InstructionsNode = {type: 'instructions', biarea, perimeter, start: prevIntersection, end: currentNode}
       if (prevIntersection !== undefined) {
         prevIntersection.exit.push(instructionsNode)
       }
@@ -163,9 +163,9 @@ const mergePolygonalsIntoInstructions = (listWithIntersections: PolygonalOrInter
     }
   }
 
-  const { biarea, perimeter } = calcPolygonalData(currentPolygonal)
+  const {biarea, perimeter} = calcPolygonalData(currentPolygonal)
   const prevIntersection = listOfInstructions.length !== 0 ? listOfInstructions[listOfInstructions.length - 1] as IntersectionNode : undefined
-  const instructionsNode: InstructionsNode = { type: 'instructions', biarea, perimeter, start: prevIntersection, end: undefined }
+  const instructionsNode: InstructionsNode = {type: 'instructions', biarea, perimeter, start: prevIntersection, end: undefined}
   if (prevIntersection !== undefined) {
     prevIntersection.exit.push(instructionsNode)
   }
@@ -179,9 +179,9 @@ export const calcMaxPolygonalData = (polygonal: Polygonal): PolygonalData => {
 
   const listOfInstructions = mergePolygonalsIntoInstructions(listWithIntersections)
 
-  const queue: PathOfInstructions[] = [{ path: [], biarea: 0, perimeter: 0 }]
+  const queue: PathOfInstructions[] = [{path: [], biarea: 0, perimeter: 0}]
   const results: PathOfInstructions[] = []
-  addInstructionsNode({ instructions: listOfInstructions[0] as InstructionsNode, orientation: true }, queue[0])
+  addInstructionsNode({instructions: listOfInstructions[0] as InstructionsNode, orientation: true}, queue[0])
   let path: PathOfInstructions | undefined
   while ((path = queue.shift()) !== undefined) {
     const lastNode = path.path[path.path.length - 1]
@@ -201,7 +201,7 @@ export const calcMaxPolygonalData = (polygonal: Polygonal): PolygonalData => {
             ...path,
             path: [...path.path]
           }
-          addInstructionsNode({ instructions: node, orientation: false }, copy)
+          addInstructionsNode({instructions: node, orientation: false}, copy)
           queue.push(copy)
         }
       })
@@ -211,7 +211,7 @@ export const calcMaxPolygonalData = (polygonal: Polygonal): PolygonalData => {
             ...path,
             path: [...path.path]
           }
-          addInstructionsNode({ instructions: node, orientation: true }, copy)
+          addInstructionsNode({instructions: node, orientation: true}, copy)
           queue.push(copy)
         }
       })
@@ -220,7 +220,7 @@ export const calcMaxPolygonalData = (polygonal: Polygonal): PolygonalData => {
 
   const maxBiarea = results.reduce((acc, curr) => acc < Math.abs(curr.biarea) ? Math.abs(curr.biarea) : acc, 0)
   const minPerimeter = results.filter(it => Math.abs(it.biarea) === maxBiarea).reduce((acc, curr) => acc > curr.perimeter ? curr.perimeter : acc, Infinity)
-  return { biarea: maxBiarea, perimeter: minPerimeter }
+  return {biarea: maxBiarea, perimeter: minPerimeter}
 }
 
 const calcPolygonalDataWithDisplacement = (polygonal: Polygonal, displacement: Vector2D = [0, 0]): PolygonalData => {
@@ -233,7 +233,7 @@ const calcPolygonalDataWithDisplacement = (polygonal: Polygonal, displacement: V
     displacement[0] += step[0]
     displacement[1] += step[1]
   }
-  return { biarea, perimeter }
+  return {biarea, perimeter}
 }
 
 export const calcPolygonalData = (polygonal: Polygonal): PolygonalData => {

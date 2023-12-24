@@ -1,4 +1,4 @@
-import { matchStringTemplate } from '../matchStringTemplate.ts'
+import {matchStringTemplate} from '../matchStringTemplate.ts'
 
 describe('matchStringTemplate tests', () => {
   test('List of numbers', () => {

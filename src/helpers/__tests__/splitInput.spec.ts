@@ -1,4 +1,4 @@
-import { splitInput } from '../splitInput.ts'
+import {splitInput} from '../splitInput.ts'
 
 describe('splitInput tests', () => {
   test('for multiple matches', () => {

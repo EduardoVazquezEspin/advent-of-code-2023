@@ -1,4 +1,4 @@
-import { dio } from './index.ts'
+import {dio} from './index.ts'
 
 beforeEach(() => {
   dio.params.template = /^Card\s+(\d+):\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+\|\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)$/g
