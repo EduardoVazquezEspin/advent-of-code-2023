@@ -132,6 +132,7 @@ if(process.env.TESTING !== 'TRUE'){
     console.log('options.TolFun = 1e-20;')
     console.log('options.TolX = 1e-20;')
     console.log('x = fsolve("equation",x0,options)')
+    console.log('disp(\'Part 2:\'), disp([1 1 1]*x(1:3))')
     console.log('*********************************************************')
   }
 }
