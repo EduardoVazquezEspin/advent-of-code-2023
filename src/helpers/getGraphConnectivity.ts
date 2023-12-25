@@ -20,15 +20,11 @@ export const getGraphConnectivity = <T>(
           neighbours.forEach(it => {
             queue.push([it, currNumber])
           })
-        } else if(otherNumber !== currNumber && !collisionsWith.has(otherNumber)){
-          collisionsWith.add(otherNumber)
-          collisions++
-          visitingNumber.set(currNode, currNumber)
-          const neighbours = goesTo(currNode)
-          neighbours.forEach(it => {
-            queue.push([it, currNumber])
-          })
         } else if(otherNumber !== currNumber){
+          if(!collisionsWith.has(otherNumber)){
+            collisionsWith.add(otherNumber)
+            collisions++
+          }
           visitingNumber.set(currNode, currNumber)
           const neighbours = goesTo(currNode)
           neighbours.forEach(it => {

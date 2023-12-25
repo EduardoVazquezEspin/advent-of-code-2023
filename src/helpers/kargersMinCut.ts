@@ -18,8 +18,8 @@ interface InternalEdge<T, E extends Edge<T>>{
  * Requires the graph to be connected.
  * The result is heuristic and so it should be run several times.
  * https://en.wikipedia.org/wiki/Karger%27s_algorithm
- * @param {E extends Edge<T>} edges The edges of the graph.
- * @return {ReturnValueDataTypeHere} A set cut of edges with high probability of being the min-cut.
+ * @param {Edge<T>[]} edges The edges of the graph.
+ * @return {Edge<T>[]} A set cut of edges with high probability of being the min-cut.
  */
 export const kargersMinCut = <T, E extends Edge<T>>(edges: E[]): E[] => {
   const nodes: Map<T, InternalNode<T, E>> = new Map<T, InternalNode<T, E>>()
